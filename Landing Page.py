@@ -1,33 +1,44 @@
-options = "Select option:\na) Registration\nb) Portal Login\nc) Learn more"
-print(options)
-usr_input = input('Select action:')
+import StudentModule
 
-if usr_input == 'a':
-    reg_selection = input('Register as Student?')
-    print(reg_selection)
-    if reg_selection == 'yes':
-        import StudentModule
-        y = StudentModule.reg_process()
-        print(y)
 
-    else:
-        print('Register as Lecturer:')
-        import LecturerModule
-        t = LecturerModule.reg()
-        print(t)
+def dashboard_selection():
+    while 1:
+        options = "Select option:\na) Admissions\nb) Login\nc) Learn more\nd) Help Desk"
+        print(options)
+        usr_input = input('Select action:')
 
-if usr_input == 'b':
-    print('1. Student Login?\n2. Staff Login?')
-    this_input = input('Choose action:')
-    if this_input == '1':
-        details = input('Enter username: ')
-        details2 = input('Enter Password:')
-    else:
-        details3 = input('Enter username:')
-        details4 = input('Enter password:')
+        if usr_input == 'a':
+            print('Launching Student Admissions!')
+            y = StudentModule.reg_process()
+            print(y)
 
-if usr_input == 'c':
-    read_file = open('AboutUs.txt', 'r')
-    print(read_file.readlines())
-    read_file.close()
+        elif usr_input == 'b':
+            print('1.Student Portal:\n2.Staff Portal:\n3.Admin:')
+            this_input = input('Choose action:')
+            if this_input == '1':
+                details = input('Enter username: ')
+                details2 = input('Enter Password:')
+            elif this_input == '2':
+                details3 = input('Enter username:')
+                details4 = input('Enter password:')
+            elif this_input == '3':
+                details5 = input('Enter username:')
+                details6 = input('Enter password:')
+            else:
+                print('Not a valid choice.')
+
+        elif usr_input == 'c':
+            read_file = open('AboutUs.txt', 'r')
+            print(read_file.readlines())
+            read_file.close()
+
+        elif usr_input == 'd':
+            details7 = input('Enter username:')
+            details8 = input('Enter password:')
+
+        else:
+            print('Not a valid choice.')
+
+
+dashboard_selection()
 
