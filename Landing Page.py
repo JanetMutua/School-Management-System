@@ -1,19 +1,19 @@
-import StudentModule
+import StudentAdmissions
 
 
 def dashboard_selection():
     while 1:
-        options = "Select option:\na) Admissions\nb) Login\nc) Learn more\nd) Help Desk"
+        options = "Welcome to Coding University!\nSelect option:\na) Admissions\nb) Login\nc) Learn more\nd) Help Desk"
         print(options)
-        usr_input = input('Select action:')
+        usr_input = input('\nSelect action:')
 
         if usr_input == 'a':
-            print('Launching Student Admissions!')
-            y = StudentModule.reg_process()
+            print('Loading...')
+            y = StudentAdmissions.menu_bar()
             print(y)
 
         elif usr_input == 'b':
-            print('1.Student Portal:\n2.Staff Portal:\n3.Admin:')
+            print('1. Student Portal:\n2. Staff Portal:\n3. Admin:')
             this_input = input('Choose action:')
             if this_input == '1':
                 details = input('Enter username: ')
