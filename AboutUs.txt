@@ -1,4 +1,0 @@
-"""We are one of the leading universities in Kenya judging by the quality of our graduates.
-Our aim is not only to maintain this position,
-but to improve further and attain our vision of becoming a world-class university,
-that is committed to quality and relevance."""
