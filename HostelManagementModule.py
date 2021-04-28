@@ -19,5 +19,10 @@ def hostel_dashboard():
     elif dashboard_option == '2':
         help_desk = 'File complaints?\nUpload your complaint email:'
         print(help_desk)
+        email = open('complaints.txt', 'w')
+        email.write(input('Enter complain:'))
+        print('Email sent')
     else:
         print('Invalid option')
+
+
