@@ -8,9 +8,9 @@ import TeachingStaffModule
 
 def dashboard_selection():
     while 1:
-        options = "Welcome to Coding University!\nMenu:\na) Admissions\nb) Login\nc) Help Desk"
+        options = "Welcome to Coding University!\n\nMenu:\na) Admissions\nb) Login\nc) Help Desk"
         print(options)
-        usr_input = input('Select action:')
+        usr_input = input('\nSelect action:')
 
         if usr_input == 'a':
             print('Loading...')
