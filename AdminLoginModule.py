@@ -50,7 +50,7 @@ def data_deletion():
     student_name = input('Enter student full name:')
     national_id = input('Enter student national id')
     stud_details = student_name, national_id
-    db_data = "DELETE FROM students (student_name, national_id) VALUES (%s, %s)"
+    db_data = "DELETE FROM students (student_name, int(national_id)) VALUES(%s, %d)"
     my_cursor.execute(db_data, stud_details)
     db.commit()
     if my_cursor.rowcount < 1:
@@ -65,7 +65,8 @@ def admin_login():
     if username_input == 'admin':
         if password_input == 'password':
             while 1:
-                print('Menu\n1. Register students\n2. Portal creation\n3. User requests\n4. Data Deletion\n5. Logout')
+                print('Menu\n1. Register students\n2. Portal creation'
+                      '\n3. User requests\n4. Data Deletion\n5. User complaints\n6. Logout')
                 menu_selection = input('Select option:')
                 if menu_selection == '1':
                     reg_students()
@@ -73,15 +74,19 @@ def admin_login():
                     print('\n1. Register student?\n2. Register teacher?')
                     reg_selection = input('Select option:')
                     print(reg_selection)
-                    if reg_selection == 1:
+                    if reg_selection == '1':
                         portal_creation()
                     else:
                         teacher_portal()
                 elif menu_selection == '3':
-                    pass
+                    read_user_requests = open('help_desk.txt', 'r')
+                    read_user_requests.readlines()
                 elif menu_selection == '4':
                     data_deletion()
                 elif menu_selection == '5':
+                    complaints_file = open('complaints.txt', 'r')
+                    complaints_file.readlines()
+                elif menu_selection == '6':
                     print('Logging out...')
                     break
                 else:
@@ -93,5 +98,5 @@ def admin_login():
         print('Invalid Login Credentials')
 
 
-
+admin_login()
 

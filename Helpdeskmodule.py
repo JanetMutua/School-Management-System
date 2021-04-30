@@ -4,4 +4,11 @@ def user_requests():
     print(requests_menu)
     users_input = input('Select option:')
     if users_input == '1':
-        print('Forgot password?\nRequest password')
+        user_request = open('help_desk.txt', 'w')
+        user_request.write('Requesting for my portal login credentials')
+        print('Your request has been sent!')
+    elif users_input == '2':
+        a_user_request = open('help_desk.txt','w')
+        a_user_request.write('Request for portal creation')
+        print('Your request has been sent')
+
