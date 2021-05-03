@@ -50,7 +50,7 @@ def data_deletion():
     student_name = input('Enter student full name:')
     national_id = input('Enter student national id')
     stud_details = student_name, national_id
-    db_data = "DELETE FROM students (student_name, int(national_id)) VALUES(%s, %d)"
+    db_data = "DELETE FROM students WHERE student_name = %s AND national_id = %d)"
     my_cursor.execute(db_data, stud_details)
     db.commit()
     if my_cursor.rowcount < 1:
@@ -96,7 +96,3 @@ def admin_login():
             print('Invalid Password')
     else:
         print('Invalid Login Credentials')
-
-
-admin_login()
-
