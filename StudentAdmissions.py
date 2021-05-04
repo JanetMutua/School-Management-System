@@ -1,41 +1,45 @@
 import StudentPortalModule
-
+import mysql.connector
+sql = mysql.connector.connect(
+    host='localhost',
+    user='janet',
+    password='I@mtowers26',
+    database='schoolmanagement'
+)
+cursor = sql.cursor(buffered=True)
 
 def my_profile():
-    print('My profile:\n1. Create my profile\n2. View profile\n 3. Edit my profile\n 4. Return to main menu')
-    select_option = input('Select option:')
-    print(select_option)
-    if select_option == '1':
-        print('Create my Profile:')
-        profile_file = open('profile_info.txt', 'w')
-        name = input('Enter full name:')
-        email = input('Enter email address: ')
-        id = input('Enter National Id number or passport number:')
-        age = input('Enter date of birth:')
-        address = input('Enter home address:')
-        profile_file.write(name)
-        profile_file.write(email)
-        profile_file.write(id)
-        profile_file.write(age)
-        profile_file.write(address)
-        print('Profile updated successfully')
-    elif select_option == '2':
-        profile_view = open('profile_info.txt', 'r')
-        print(profile_view)
-    elif select_option == '3':
-        profile_edit = open('profile_info.txt', 'a')
-        change_name = input('Edit full name:')
-        change_email = input('Edit email address: ')
-        change_id = input('Edit National Id number or passport number:')
-        change_age = input('Edit date of birth:')
-        change_address = input('Edit home address:')
-        profile_edit.write(change_name)
-        profile_edit.write(change_email)
-        profile_edit.write(change_id)
-        profile_edit.write(change_age)
-        profile_edit.write(change_address)
-        print('Profile edited successfully')
+    while 1:
+        print('My profile:\n1. Create my profile\n2. View profile\n3. Edit my profile\n4. Return to main menu')
+        select_option = input('Select option:')
+        print(select_option)
+        if select_option == '1':
+            print('Create my Profile:')
+            username = input('Enter full name:')
+            email_address = input('Enter email address: ')
+            address = input('Enter home address:')
+            date_of_birth = input('Enter date of birth:')
+            profile_data = username, email_address, address, date_of_birth
+            profile_db = 'INSERT INTO profile(username, email_address, address, date_of_birth) VALUES (%s, %s, %s, %s)'
+            cursor.execute(profile_db, profile_data)
+            sql.commit()
+            print('Profile updated successfully')
+        elif select_option == '2':
+            print('Opening my profile...')
+            cursor.execute('SELECT * from profile')
+            profile_retrieve = cursor.fetchall()
+            user_name = input('Enter my name:')
+            for data in profile_retrieve:
+                if data == user_name:
+                    print(data[0])
+                    print(data[1])
+                    print(data[2])
+                    print(data[3])
+        elif select_option == '3':
+            pass
 
+
+my_profile()
 
 def menu_bar():
     while 1:
