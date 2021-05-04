@@ -48,15 +48,31 @@ def reg_students():
 def data_deletion():
     print('Deletion of student data:')
     student_name = input('Enter student full name:')
-    national_id = input('Enter student national id')
+    national_id = input('Enter student national id:')
     stud_details = student_name, national_id
-    db_data = "DELETE FROM students WHERE student_name = %s AND national_id = %d)"
+    db_data = "DELETE FROM students WHERE student_name = %s AND national_id = %d"
     my_cursor.execute(db_data, stud_details)
     db.commit()
     if my_cursor.rowcount < 1:
         print('No user found')
     else:
         print(student_name + ' has been deleted')
+
+
+data_deletion()
+
+
+
+
+def jobs_posts():
+    print('Update jobs portal.')
+    job_title = input('Enter job title:')
+    job_description = input('Enter job description:')
+    application_procedure = input('Enter the application procedure:')
+    job_data = job_title, job_description, application_procedure
+    my_cursor.execute('INSERT INTO jobs (job_title,job_description,application_procedure)VALUES (%s, %s, %s)', job_data)
+    db.commit()
+    print('Job portal updated successfully!')
 
 
 def admin_login():
@@ -66,7 +82,7 @@ def admin_login():
         if password_input == 'password':
             while 1:
                 print('Menu\n1. Register students\n2. Portal creation'
-                      '\n3. User requests\n4. Data Deletion\n5. User complaints\n6. Logout')
+                      '\n3. User requests\n4. Data Deletion\n5. User complaints\n6. Jobs posting\n7. Logout')
                 menu_selection = input('Select option:')
                 if menu_selection == '1':
                     reg_students()
@@ -87,6 +103,8 @@ def admin_login():
                     complaints_file = open('complaints.txt', 'r')
                     complaints_file.readlines()
                 elif menu_selection == '6':
+                    jobs_posts()
+                elif menu_selection == '7':
                     print('Logging out...')
                     break
                 else:
