@@ -1,4 +1,4 @@
-from mysql.connector import MySQLConnection, Error
+
 
 import mysql.connector as mysql
 db = mysql.connect(
@@ -28,9 +28,17 @@ def login_general_staff():
                 print('Attendance marked successfully!')
             else:
                 print('Viewing available job posts')
-                my_cursor.execute('SELECT * from JOBS')
-                print(my_cursor.fetchall())
+                my_cursor.execute('SELECT * from jobs')
+                my_jobs_data = (my_cursor.fetchall())
+                for data in my_jobs_data:
+                    print('\nJOB:')
+                    print(data[0])
+                    print('Requirements:')
+                    print(data[1])
+                    print('Application instructions:')
+                    print(data[2])
                 db.close()
+
 
 
         else:
@@ -38,5 +46,3 @@ def login_general_staff():
     else:
         print('Invalid login credentials')
 
-
-login_general_staff()
