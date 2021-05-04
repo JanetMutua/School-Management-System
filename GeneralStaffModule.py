@@ -1,5 +1,4 @@
-from mysql.connector import MySQLConnection, Error
-from python_mysql_dbconfig import read_db_config
+
 
 import mysql.connector as mysql
 db = mysql.connect(
@@ -28,33 +27,22 @@ def login_general_staff():
                 db.commit()
                 print('Attendance marked successfully!')
             else:
-                def query_with_fetchone():
-                    try:
-                        dbconfig = read_db_config()
-                        conn = MySQLConnection(**dbconfig)
-                        cursor = conn.cursor()
-                        cursor.execute("SELECT * FROM books")
+                print('Viewing available job posts')
+                my_cursor.execute('SELECT * from jobs')
+                my_jobs_data = (my_cursor.fetchall())
+                for data in my_jobs_data:
+                    print('\nJOB:')
+                    print(data[0])
+                    print('Requirements:')
+                    print(data[1])
+                    print('Application instructions:')
+                    print(data[2])
+                db.close()
 
-                        row = cursor.fetchone()
 
-                        while row is not None:
-                            print(row)
-                            row = cursor.fetchone()
-
-                    except Error as e:
-                        print(e)
-
-                    finally:
-                        cursor.close()
-                        conn.close()
-
-                if __name__ == '__main__':
-                    query_with_fetchone()
 
         else:
             print('Invalid password')
     else:
         print('Invalid login credentials')
 
-
-login_general_staff()

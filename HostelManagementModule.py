@@ -1,3 +1,11 @@
+import mysql.connector
+sql = mysql.connector.connect(
+    host='localhost',
+    user='janet',
+    password='I@mtowers26',
+    database='schoolmanagement',
+)
+cursor = sql.cursor(buffered=True)
 
 
 def hostel_dashboard():
@@ -5,15 +13,22 @@ def hostel_dashboard():
     print(dashboard)
     dashboard_option = input('Select option:')
     if dashboard_option == '1':
-        my_dashboard = '1. View available hostels\n2. Accommodation\n3. View application status'
+        my_dashboard = '1. View available hostels\n2. Accommodation'
         print(my_dashboard)
         dashboard_user = input('Select option:')
         if dashboard_user == '1':
             print('List of available hostels:')
         elif dashboard_user == '2':
-            print('Hostel application:\nDownload the form below,fill it and upload it to system')
-        elif dashboard_user == '3':
-            print('Viewing application status')
+            print('Apply for hostels')
+            studname = input('Enter your full name:')
+            nationalid = input('Enter your National Id number:')
+            hostelname = input('Enter hostel name:')
+            year_of_study = input('Enter your year of study:')
+            hostel_data = studname, nationalid, hostelname, year_of_study
+            data = 'INSERT INTO hostelreg (studname,nationalid,hostelname, year_of_study)VALUES(%s, %s, %s, %s)'
+            cursor.execute(data, hostel_data)
+            sql.commit()
+            print('Application sent!')
         else:
             print('Invalid option')
     elif dashboard_option == '2':
@@ -23,6 +38,9 @@ def hostel_dashboard():
         email.write(input('Enter complain:'))
         print('Email sent')
     else:
-        print('Invalid option')
+        print('Invalid input')
+
+
+
 
 
