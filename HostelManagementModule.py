@@ -25,7 +25,7 @@ def hostel_dashboard():
             hostelname = input('Enter hostel name:')
             year_of_study = input('Enter your year of study:')
             hostel_data = studname, nationalid, hostelname, year_of_study
-            data = 'INSERT INTO hostelreg (studname,nationalid,hostelname, year_of_study)VALUES(%s, %d, %s, %s)'
+            data = 'INSERT INTO hostelreg (studname,nationalid,hostelname, year_of_study)VALUES(%s, %s, %s, %s)'
             cursor.execute(data, hostel_data)
             sql.commit()
             print('Application sent!')
@@ -38,10 +38,7 @@ def hostel_dashboard():
         email.write(input('Enter complain:'))
         print('Email sent')
     else:
-        print('Invalid option')
-
-
-hostel_dashboard()
+        print('Invalid input')
 
 
 
