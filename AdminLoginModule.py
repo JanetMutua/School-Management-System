@@ -16,7 +16,7 @@ def portal_creation():
     my_data = "INSERT INTO users (username, password, priviledge) VALUES (%s, %s, %s)"
     my_cursor.execute(my_data, login_credentials)
     db.commit()
-    print('Student Portal for ' + username + 'has been created successfully')
+    print('Student Portal for ' + username + ' has been created successfully')
 
 
 def teacher_portal():
@@ -41,8 +41,7 @@ def reg_students():
     db.commit()
     print(student_name + ' has been registered successfully')
     reg_status = open('registration_status.txt', 'w')
-    reg_status.write('Congratulations' + student_name + ', you have been admitted to Coding University')
-
+    reg_status.write('Congratulations ' + student_name + ', you have been admitted to Coding University')
 
 
 def data_deletion():
@@ -50,18 +49,13 @@ def data_deletion():
     student_name = input('Enter student full name:')
     national_id = input('Enter student national id:')
     stud_details = student_name, national_id
-    db_data = "DELETE FROM students WHERE student_name = %s AND national_id = %d"
+    db_data = "DELETE FROM students WHERE student_name = %s AND national_id = %s"
     my_cursor.execute(db_data, stud_details)
     db.commit()
     if my_cursor.rowcount < 1:
         print('No user found')
     else:
         print(student_name + ' has been deleted')
-
-
-data_deletion()
-
-
 
 
 def jobs_posts():
@@ -114,3 +108,5 @@ def admin_login():
             print('Invalid Password')
     else:
         print('Invalid Login Credentials')
+
+
