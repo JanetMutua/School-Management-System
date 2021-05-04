@@ -29,7 +29,7 @@ def login_general_staff():
             else:
                 print('Viewing available job posts')
                 my_cursor.execute('SELECT * from jobs')
-                my_jobs_data = (my_cursor.fetchall())
+                my_jobs_data = my_cursor.fetchall()
                 for data in my_jobs_data:
                     print('\nJOB:')
                     print(data[0])
@@ -38,9 +38,6 @@ def login_general_staff():
                     print('Application instructions:')
                     print(data[2])
                 db.close()
-
-
-
         else:
             print('Invalid password')
     else:
