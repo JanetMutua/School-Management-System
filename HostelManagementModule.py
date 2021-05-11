@@ -42,5 +42,3 @@ def hostel_dashboard():
 
 
 
-
-
