@@ -35,10 +35,14 @@ def my_profile():
                     print(data[1])
                     print(data[2])
                     print(data[3])
+                else:
+                    print('Cant view profile')
         elif select_option == '3':
             break
         else:
             print('Invalid option')
+
+my_profile()
 
 
 def menu_bar():
@@ -51,16 +55,7 @@ def menu_bar():
             adm_status = open('registration_status.txt', 'r')
             print(adm_status.readlines())
         elif our_menu == '2':
-            adm_options = '1. Download application form\n2. Upload filled form'
-            print(adm_options)
-            if adm_options == '1':
-                admission_letter = open('admissionletter.txt', 'a')
-                admission_letter.readlines()
-                return admission_letter
-            else:
-                filled_form = open('admissionletter.txt','r')
-                filled_form.readlines()
-                return filled_form
+            pass
         elif our_menu == '3':
             my_profile()
         elif our_menu == '4':
