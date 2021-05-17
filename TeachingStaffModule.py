@@ -36,9 +36,6 @@ def student_transcript():
     teacher_database.close()
 
 
-
-
-
 def login_teaching_staff():
     teacher_username = input('Enter username:')
     teacher_password = input('Enter password:')
