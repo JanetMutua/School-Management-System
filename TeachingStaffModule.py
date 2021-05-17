@@ -36,34 +36,34 @@ def student_transcript():
     teacher_database.close()
 
 
-student_transcript()
-
-
 def login_teaching_staff():
     teacher_username = input('Enter username:')
     teacher_password = input('Enter password:')
     if teacher_username == 'myname':
         if teacher_password == 'myId':
-            print('Main menu:\n1. Exam management\n2. Staff attendance tracker')
-            teacher_input = input('Select option:')
-            if teacher_input == '1':
-                print('1. Enter student marks\n2. View student transcript')
-                menu_option = input('Select option:')
-                print(menu_option)
-                if menu_option == '1':
-                    student_marks()
-                else:
-                    student_transcript()
-            elif teacher_input == 2:
-                teacher_name = input('Enter your full name:')
-                teacher_job = input('Enter your job description:')
-                teacher_attendance = input('Confirm if present?')
-                attendance_status = teacher_name, teacher_attendance, teacher_job
-                database_entries = 'INSERT INTO attendance_tracker' \
-                                   '(teacher_name, teacher_job, teacher_attendance) VALUES(%s, %s, %s)'
-                tr_cursor.execute(database_entries, attendance_status)
-                teacher_database.commit()
-                print('Attendance marked successfully')
+            while 1:
+                print('Main menu:\n1. Exam management\n2. Staff attendance tracker\n3. Logout')
+                teacher_input = input('Select option:')
+                if teacher_input == '1':
+                    print('1. Enter student marks\n2. View student transcript')
+                    menu_option = input('Select option:')
+                    print(menu_option)
+                    if menu_option == '1':
+                        student_marks()
+                    else:
+                        student_transcript()
+                elif teacher_input == 2:
+                    teacher_name = input('Enter your full name:')
+                    teacher_job = input('Enter your job description:')
+                    teacher_attendance = input('Confirm if present?')
+                    attendance_status = teacher_name, teacher_attendance, teacher_job
+                    database_entries = 'INSERT INTO attendance_tracker' \
+                                       '(teacher_name, teacher_job, teacher_attendance) VALUES(%s, %s, %s)'
+                    tr_cursor.execute(database_entries, attendance_status)
+                    teacher_database.commit()
+                    print('Attendance marked successfully')
+                elif teacher_input == '3':
+                    break
             else:
                 print('Invalid option')
         else:
@@ -71,3 +71,5 @@ def login_teaching_staff():
     else:
         print('Invalid login credentials')
 
+
+login_teaching_staff()
