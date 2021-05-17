@@ -76,7 +76,8 @@ def admin_login():
         if password_input == 'password':
             while 1:
                 print('Menu\n1. Register students\n2. Portal creation'
-                      '\n3. User requests\n4. Data Deletion\n5. User complaints\n6. Jobs posting\n7. Logout')
+                      '\n3. User requests\n4. Data Deletion\n5. User complaints'
+                      '\n6. Jobs posting\n7. Fee balances update\n8.Courses Module\n9. Logout')
                 menu_selection = input('Select option:')
                 if menu_selection == '1':
                     reg_students()
