@@ -12,13 +12,14 @@ def course_dashboard():
     while 1:
         dashboard = 'Main menu:\n1. Register courses\n2. Academics\n3. Course modules\n4. Logout '
         print(dashboard)
-        dashboard_entry = input('Select option:')
+        z = input('Select option:')
         if dashboard_entry == '1':
             course_name = input('Enter preferred course name:')
             student_name = input('Enter your full name:')
             student_id = input('Enter your student id:')
             student_grade = input('Enter your grade points:')
             course_reg_details = course_name, student_grade, student_name, student_id
+
             course_db = 'INSERT INTO course_reg (course_name, student_name, student_id, student_grade)VALUES(%s, %s, %s, %s)'
             course_cursor.execute(course_db, course_reg_details)
             course_database.commit()
@@ -40,7 +41,6 @@ def course_dashboard():
             print('No valid option selected')
 
 
-course_dashboard()
 
 
 
