@@ -42,8 +42,6 @@ def my_profile():
         else:
             print('Invalid option')
 
-my_profile()
-
 
 def menu_bar():
     while 1:

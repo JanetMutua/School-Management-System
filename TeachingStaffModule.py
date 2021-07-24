@@ -15,24 +15,25 @@ def student_marks():
     student_inputs = student_name, course, aggregate_points, remark
     student_db = 'INSERT INTO student_marks(student_name, course, aggregate_points, remark)VALUES(%s, %s, %s, %s)'
     tr_cursor.execute(student_db, student_inputs)
-    teacher_database.commit()
     print('Marks updated successfully')
+    teacher_database.commit()
 
 
 def student_transcript():
     print('Student Transcript:')
-    tr_cursor.execute('SELECT * FROM student_marks')
-    student_data = tr_cursor.fetchall()
     student_identification = input('Enter Student full name:')
     print(student_identification)
-    for data in student_data:
-        if data == student_identification:
+    tr_cursor.execute('SELECT * FROM student_marks')
+    student_data = tr_cursor.fetchall()
+    if student_data == student_identification:
+        print('Loading student transcript:')
+        for data in student_data:
             print(data[0])
             print(data[1])
             print(data[2])
             print(data[3])
-        else:
-            print('Student data not found')
+    else:
+        print('No data to be shown')
     teacher_database.close()
 
 
@@ -71,5 +72,3 @@ def login_teaching_staff():
     else:
         print('Invalid login credentials')
 
-
-login_teaching_staff()

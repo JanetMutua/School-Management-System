@@ -5,10 +5,10 @@ def user_requests():
     users_input = input('Select option:')
     if users_input == '1':
         user_request = open('help_desk.txt', 'w')
-        user_request.write('Requesting for my portal login credentials')
+        user_request.write('Requesting for my portal login credentials\nKindly wait for your login details')
         print('Your request has been sent!')
     elif users_input == '2':
         a_user_request = open('help_desk.txt','w')
         a_user_request.write('Request for portal creation')
-        print('Your request has been sent')
+        print('Your request has been sent.\nPlease wait for upto 72 hours to get a response.')
 
