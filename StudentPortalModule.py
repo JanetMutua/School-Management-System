@@ -16,7 +16,7 @@ def student_login():
     username_input = input('Enter username:')
     password_input = input('Enter password:')
     login_cred = username_input, password_input
-    login_database = 'SELECT username FROM users WHERE username = %s AND password =%s AND priviledge = %s'
+    login_database = 'SELECT username FROM users WHERE username = %s AND password =%s AND priviledge = "student"'
     stud_cursor.execute(login_database, login_cred)
     username = stud_cursor.fetchone()
     if stud_cursor <= 0:
@@ -40,4 +40,5 @@ def student_login():
                 break
             else:
                 print('Not a valid option')
+
 
